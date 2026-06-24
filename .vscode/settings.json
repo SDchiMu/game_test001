@@ -1,0 +1,177 @@
+{
+  // =====================================
+  // GitHub Copilot 配置
+  // 关联 .github/prompts/ 下的自定义 prompt
+  // =====================================
+  "github.copilot.chat.codeReview.instructions": [
+    {
+      "file": ".github/prompts/code-review.prompt.md"
+    }
+  ],
+  "github.copilot.chat.writeTests.instructions": [
+    {
+      "file": ".github/prompts/write-tests.prompt.md"
+    }
+  ],
+  "github.copilot.chat.fixTestFailure.instructions": [
+    {
+      "file": ".github/prompts/write-tests.prompt.md"
+    }
+  ],
+  // testGeneration 已通过 .github/prompts/ 指令文件自动生效
+  // =====================================
+  // Python 配置
+  // 规范来源: .github/instructions/python.instructions.md
+  // 技术栈: FastAPI / SQLAlchemy / pytest
+  // =====================================
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.completeFunctionParens": true,
+  // pytest（规范要求: pytest 框架、test_ 前缀、独立测试、pytest-mock）
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": [
+    "--maxfail=3",
+    "--tb=short",
+    "-v"
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    },
+    "editor.defaultFormatter": null,
+    "editor.rulers": [
+      88
+    ]
+  },
+  "ruff.organizeImports": true,
+  "ruff.fixAll": true,
+  // =====================================
+  // TypeScript / React 配置
+  // 规范来源: .github/instructions/react.instructions.md
+  // 技术栈: React 18+ / TypeScript / Tailwind CSS / Vitest
+  // =====================================
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.quoteStyle": "single",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.suggest.autoImports": true,
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null
+  },
+  // Tailwind CSS（规范要求使用 Tailwind）
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "className=\"([^\"]*)\""
+    ],
+    [
+      "className={([\"'`].*?[\"'`])}"
+    ]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescriptreact": "html",
+    "javascriptreact": "html"
+  },
+  // Emmet JSX 支持
+  "emmet.includeLanguages": {
+    "typescriptreact": "jsx",
+    "javascriptreact": "jsx"
+  },
+  // 文件嵌套分组（组件 + 配套文件自动折叠）
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.tsx": "${capture}.css, ${capture}.module.css, ${capture}.test.tsx, ${capture}.stories.tsx",
+    "*.jsx": "${capture}.css, ${capture}.module.css, ${capture}.test.jsx, ${capture}.stories.jsx",
+    "*.test.tsx": "${capture}.test.tsx.snap",
+    "pyproject.toml": "requirements*.txt, *.cfg, *.ini",
+    "package.json": "tsconfig*.json, .eslintrc*, .prettierrc*, vite.config.*, tailwind.config.*, postcss.config.*, next.config.*"
+  },
+  // =====================================
+  // 通用编辑器配置
+  // =====================================
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "off",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.suggestSelection": "first",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "**/*.egg-info": true,
+    "**/node_modules": true,
+    "**/.venv": true
+  },
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/node_modules/**": true,
+    "**/__pycache__/**": true
+  },
+  // =====================================
+  // 搜索排除
+  // =====================================
+  "search.exclude": {
+    "**/.venv": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.pytest_cache": true,
+    "**/__pycache__": true,
+    "**/.ruff_cache": true,
+    "**/*.egg-info": true
+  },
+  // =====================================
+  // 文件关联
+  // =====================================
+  "files.associations": {
+    "*.prompt.md": "markdown",
+    "*.instructions.md": "markdown"
+  },
+  // =====================================
+  // 语言特定缩进覆盖
+  // =====================================
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  }
+}

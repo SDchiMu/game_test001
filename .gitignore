@@ -19,7 +19,6 @@ build/
 *.tsbuildinfo
 
 # IDE
-.vscode/settings.json
 .idea/
 *.swp
 *.swo
